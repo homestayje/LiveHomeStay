@@ -1,23 +1,44 @@
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+           $('.mainslick').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:2
+        }
+    }
+})
+        })
+
+    </script>
+    
 <style>
     .promotions {
        display: flex;
    }
    .maincol {
        display: flex;
-       flex-direction: row-reverse;
        flex: 1 1 33%;
        margin: 0 0.5%;
        background: linear-gradient(347deg, rgba(47,79,244,1) 0%, rgba(54,20,27,1) 99%);
    }
    
-   .col1 {
-       width: 30%;
-   }
-   
-   .col2 {
-       width: 68%;
-   }
+
    .col2 p {margin-bottom: 0px;}
    
    .col1 h4 {
@@ -27,17 +48,16 @@
        color: white !important;
    }
    .col2 {
-       width: 60%;
+       flex:1;
        display: flex;
-       align-items: flex-start;
+       align-items: flex-end;
        flex-direction: column;
    }
    .col1 {
-       width: 36%;
+     
        display: flex;
        justify-content: center;
        align-items: center;
-       flex-direction: row-reverse;
    }
    .col2 p {
        color: white;
@@ -61,7 +81,7 @@
        color: white;
    }
    
-   .col1:after {content: '';position: absolute;background: white;width: 2px;height: 100%;top: 0;right: -5px;}
+   .col1:after {content: '';position: absolute;background: white;width: 2px;height: 100%;top: 0;left: 110px;}
    
    .col1 {
        position: relative;
@@ -72,7 +92,9 @@
    }
    @media only screen and (max-width:767px) {
    
-   
+    .owl-nav {
+    display: none !important;
+}
    .col1:after {
        content: '';
        position: absolute;
@@ -82,7 +104,8 @@
        bottom: 0;
        right: 0;
        top: unset;
-   }
+       left: unset !important;
+    }
    
    .maincol {
    flex-direction: column;
@@ -107,7 +130,7 @@
 @if(count($our_promotions) > 0)
 <div class="g-overview">
     <h3>{{__("Our Promotions")}}</h3>
-    <div class="promotions owl-carousel owl-theme">
+    <div class="promotions mainslick owl-carousel owl-theme">
         @foreach ($our_promotions as $coupen)
    
         
