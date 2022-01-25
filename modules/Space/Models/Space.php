@@ -51,6 +51,7 @@ class Space extends Bookable
         'extra_price'  => 'array',
         'service_fee' => 'array',
         'surrounding' => 'array',
+        'cancel_policy' => 'array',
     ];
     /**
      * @var Booking

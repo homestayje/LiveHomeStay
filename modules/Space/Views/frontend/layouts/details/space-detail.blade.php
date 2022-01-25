@@ -6,8 +6,8 @@
 
     <script>
 
-        $(document).ready(function() {
-           $('.mainslick').owlCarousel({
+       
+    $('.mainslick').owlCarousel({
     loop:true,
     margin:10,
     nav:true,
@@ -23,7 +23,7 @@
         }
     }
 })
-        })
+      
 
     </script>
     
@@ -286,6 +286,33 @@
     </div>
 @endif
 @include('Space::frontend.layouts.details.space-attributes')
+<hr>
+@if($translation->cancel_policy)
+@php $translation->cancel_policy = json_decode($translation->cancel_policy,true); @endphp
+    <h3>{{__("Cancellation Policies")}}</h3>
+    <div class="row">
+        
+        <div class="col-lg-4">
+            {{-- <div class="key">{{__("Our Cancellation Policies")}}</div> --}}
+        </div>
+        <div class="col-lg-8">
+            @foreach($translation->cancel_policy as $key => $item)
+                <div class="item @if($key > 1) d-none @endif">
+                    <div class="strong">{{$item['cancel_name']}}</div>
+                    <div class="context">{!! $item['cancel_content'] !!} price {!! $item['cancel_price'] !!} {!! $item['cancel_unit'] !!}</div>
+                    {{-- <div class="context">{!! $item['cancel_price'] !!}</div>
+                    <div class="context">{!! $item['cancel_unit'] !!}</div> --}}
+                </div>
+            @endforeach
+            @if( count($translation->cancel_policy) > 2)
+                <div class="btn-show-all">
+                    <span class="text">{{__("Show All")}}</span>
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            @endif
+        </div>
+    </div>
+@endif
 @if($translation->faqs)
 <div class="g-faq">
     <h3> {{__("FAQs")}} </h3>

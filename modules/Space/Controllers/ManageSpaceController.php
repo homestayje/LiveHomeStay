@@ -185,6 +185,7 @@ class ManageSpaceController extends FrontendController
             'enable_service_fee',
             'service_fee',
             'surrounding',
+            'cancel_policy'
 
         ];
         if($this->hasPermission('space_manage_others')){
