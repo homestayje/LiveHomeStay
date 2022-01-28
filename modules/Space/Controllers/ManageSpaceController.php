@@ -58,7 +58,7 @@ class ManageSpaceController extends FrontendController
             'rows' => $rows->paginate(5),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Manage Homestays'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -66,7 +66,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Manage Spaces"),
+            'page_title'         => __("Manage Homestays"),
         ];
         return view('Space::frontend.manageSpace.index', $data);
     }
@@ -81,7 +81,7 @@ class ManageSpaceController extends FrontendController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Manage Homestay'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -89,7 +89,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Recovery Spaces"),
+            'page_title'         => __("Recovery Homestay"),
         ];
         return view('Space::frontend.manageSpace.index', $data);
     }
@@ -104,7 +104,7 @@ class ManageSpaceController extends FrontendController
             event(new UpdatedServiceEvent($query));
 
         }
-        return redirect(route('space.vendor.recovery'))->with('success', __('Restore space success!'));
+        return redirect(route('space.vendor.recovery'))->with('success', __('Restore homestay success!'));
     }
 
     public function createSpace(Request $request)
@@ -119,7 +119,7 @@ class ManageSpaceController extends FrontendController
             'attributes'    => $this->attributesClass::where('service', 'space')->get(),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Manage Homestay'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -127,7 +127,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Create Spaces"),
+            'page_title'         => __("Create Homestays"),
         ];
         return view('Space::frontend.manageSpace.detail', $data);
     }
@@ -205,10 +205,10 @@ class ManageSpaceController extends FrontendController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Space updated') );
+                return back()->with('success',  __('Homestay updated') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('space.vendor.edit',['id'=>$row->id]))->with('success', __('Space created') );
+                return redirect(route('space.vendor.edit',['id'=>$row->id]))->with('success', __('Homestay created') );
             }
         }
     }
@@ -248,7 +248,7 @@ class ManageSpaceController extends FrontendController
             "selected_terms" => $row->terms->pluck('term_id'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Manage Homestays'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -277,7 +277,7 @@ class ManageSpaceController extends FrontendController
                 event(new UpdatedServiceEvent($query));
             }
         }
-        return redirect(route('space.vendor.index'))->with('success', __('Delete space success!'));
+        return redirect(route('space.vendor.index'))->with('success', __('Delete homestay success!'));
     }
 
     public function bulkEditSpace($id , Request $request){

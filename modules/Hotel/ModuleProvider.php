@@ -33,18 +33,18 @@ class ModuleProvider extends ModuleServiceProvider
             'hotel'=>[
                 "position"=>32,
                 'url'        => 'admin/module/hotel',
-                'title'      => __('Homestay'),
+                'title'      => __('Hotel'),
                 'icon'       => 'fa fa-building-o',
                 'permission' => 'hotel_view',
                 'children'   => [
                     'add'=>[
                         'url'        => 'admin/module/hotel',
-                        'title'      => __('All Homestays'),
+                        'title'      => __('All Hotels'),
                         'permission' => 'hotel_view',
                     ],
                     'create'=>[
                         'url'        => 'admin/module/hotel/create',
-                        'title'      => __('Add new Homestay'),
+                        'title'      => __('Add new Hotel'),
                         'permission' => 'hotel_create',
                     ],
                     'attribute'=>[
@@ -81,7 +81,7 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'hotel'=>[
                 'class' => Hotel::class,
-                'name'  => __("Homestay"),
+                'name'  => __("Hotel"),
                 'items' => Hotel::searchForMenu(),
                 'position'=>41
             ]
@@ -95,18 +95,18 @@ class ModuleProvider extends ModuleServiceProvider
         if(Hotel::isEnable()){
             $res['hotel'] = [
                 'url'   => route('hotel.vendor.index'),
-                'title'      => __("Manage Homestay"),
+                'title'      => __("Manage Hotels"),
                 'icon'       => Hotel::getServiceIconFeatured(),
                 'position'   => 30,
                 'permission' => 'hotel_view',
                 'children' => [
                     [
                         'url'   => route('hotel.vendor.index'),
-                        'title'  => __("All Homestays"),
+                        'title'  => __("All Hotels"),
                     ],
                     [
                         'url'   => route('hotel.vendor.create'),
-                        'title'      => __("Add Homestay"),
+                        'title'      => __("Add Hotel"),
                         'permission' => 'hotel_create',
                     ],
                     [

@@ -32,18 +32,18 @@ class ModuleProvider extends ModuleServiceProvider
             'space'=>[
                 "position"=>41,
                 'url'        => 'admin/module/space',
-                'title'      => __('Space'),
+                'title'      => __('Homestay'),
                 'icon'       => 'ion ion-md-home',
                 'permission' => 'space_view',
                 'children'   => [
                     'add'=>[
                         'url'        => 'admin/module/space',
-                        'title'      => __('All Spaces'),
+                        'title'      => __('All Homestays'),
                         'permission' => 'space_view',
                     ],
                     'create'=>[
                         'url'        => 'admin/module/space/create',
-                        'title'      => __('Add new Space'),
+                        'title'      => __('Add new Homestay'),
                         'permission' => 'space_create',
                     ],
                     'attribute'=>[
@@ -81,7 +81,7 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'space'=>[
                 'class' => Space::class,
-                'name'  => __("Spaces"),
+                'name'  => __("Homestays"),
                 'items' => Space::searchForMenu(),
                 'position'=>41
             ]
@@ -94,18 +94,18 @@ class ModuleProvider extends ModuleServiceProvider
         if (Space::isEnable()) {
             $res['space'] = [
                 'url'        => route('space.vendor.index'),
-                'title'      => __("Manage Space"),
+                'title'      => __("Manage Homestay"),
                 'icon'       => Space::getServiceIconFeatured(),
                 'position'   => 32,
                 'permission' => 'space_view',
                 'children'   => [
                     [
                         'url'   => route('space.vendor.index'),
-                        'title' => __("All Spaces"),
+                        'title' => __("All Homestays"),
                     ],
                     [
                         'url'        => route('space.vendor.create'),
-                        'title'      => __("Add Space"),
+                        'title'      => __("Add Homestay"),
                         'permission' => 'space_create',
                     ],
                     [
