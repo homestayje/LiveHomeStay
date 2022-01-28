@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <h2 class="title-bar no-border-bottom">
-        {{$row->id ? __('Edit: ').$row->title : __('Add new space')}}
+        {{$row->id ? __('Edit: ').$row->title : __('Add new homestay')}}
     </h2>
     @include('admin.message')
     @if($row->id)
