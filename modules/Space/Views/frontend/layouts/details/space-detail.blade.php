@@ -35,7 +35,8 @@
        display: flex;
        flex: 1 1 33%;
        margin: 0 0.5%;
-       background: linear-gradient(347deg, rgba(47,79,244,1) 0%, rgba(54,20,27,1) 99%);
+       background: linear-gradient(341deg, rgba(47,79,244,1) 0%, rgb(1 190 227) 99%);
+       border-radius: 10px;
    }
    
 
@@ -81,7 +82,7 @@
        color: white;
    }
    
-   .col1:after {content: '';position: absolute;background: white;width: 2px;height: 100%;top: 0;left: 110px;}
+   .col1:after {content: '';position: absolute;background: white;width: 2px;height: 100%;top: 0;left: 195px;}
    
    .col1 {
        position: relative;
@@ -127,30 +128,7 @@
    
    }
    </style>
-@if(count($our_promotions) > 0)
-<div class="g-overview">
-    <h3>{{__("Our Promotions")}}</h3>
-    <div class="promotions mainslick owl-carousel owl-theme">
-        @foreach ($our_promotions as $coupen)
-   
-        
-            <div class="maincol"> 
-                <div class="col1">
-                    <h4 class="promotion_amount">{{$coupen->amount }} </h4> @if($coupen->discount_type == 'percent') <sup>%</sup> @else  @endif
-                </div>
-                <div class="col2">
-                    <p class="promotion_date">{{ \Carbon\Carbon::parse($coupen->created_at)->format('d.m.Y')}} - {{\Carbon\Carbon::parse($coupen->end_date)->format('d.m.Y')}}</p>
-                    <p class="promotion_coupen">PROMO: {{$coupen->code}}</p>
-                    <p class="promotion_limited">Limited Price</p>
-                </div>
-            </div>
-        
-    @endforeach
-    
-       
-    </div>
-</div>
-@endif
+
 <div class="g-header">
     <div class="left">
         <h1>{!! clean($translation->title) !!}</h1>
@@ -276,6 +254,30 @@
             </div>
         </div>
     </div>
+@endif
+@if(count($our_promotions) > 0)
+<div class="g-overview">
+    <h3>{{__("Our Promotions")}}</h3>
+    <div class="promotions mainslick owl-carousel owl-theme">
+        @foreach ($our_promotions as $coupen)
+   
+        
+            <div class="maincol"> 
+                <div class="col1">
+                    <h4 class="promotion_amount">RM{{$coupen->amount }} </h4> @if($coupen->discount_type == 'percent') <sup>%</sup> @else  @endif
+                </div>
+                <div class="col2">
+                    <p class="promotion_date">{{ \Carbon\Carbon::parse($coupen->created_at)->format('d.m.Y')}} - {{\Carbon\Carbon::parse($coupen->end_date)->format('d.m.Y')}}</p>
+                    <p class="promotion_coupen">PROMO: {{$coupen->code}}</p>
+                    <p class="promotion_limited">Limited Price</p>
+                </div>
+            </div>
+        
+    @endforeach
+    
+       
+    </div>
+</div>
 @endif
 @if($translation->content)
     <div class="g-overview">
