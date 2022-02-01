@@ -130,6 +130,7 @@
     ul.share-wrapper .fa {
         color: black;
     }
+    .col-12.customdirection {padding-left: 0;margin-bottom: 20px;}
    </style>
 
 <div class="g-header">
