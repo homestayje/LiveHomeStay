@@ -51,6 +51,21 @@
             });
             @endif
         })
+        function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+    window.open(
+  "https://www.google.com/maps/dir/"+position.coords.latitude+","+position.coords.longitude+"/{{$row->map_lat}},{{$row->map_lng}}",
+    '_blank' 
+    );
+//    window.location.href="https://www.google.com/maps/dir/"+position.coords.latitude+","+position.coords.longitude+"/{{$row->map_lat}},{{$row->map_lng}}";
+    }
     </script>
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}

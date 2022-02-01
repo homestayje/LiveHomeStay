@@ -356,11 +356,32 @@
 </div>
 @endif
 @includeIf("Hotel::frontend.layouts.details.hotel-surrounding")
-@if($row->map_lat && $row->map_lng)
+{{-- @if($row->map_lat && $row->map_lng)
 <div class="g-location">
     <h3>{{__("Location")}}</h3>
     <div class="location-map">
         <div id="map_content"></div>
     </div>
 </div>
+@endif --}}
+
+@if($row->map_lat && $row->map_lng)
+    <div class="g-location">
+        <div class="location-title">
+            <h3>{{__("Location")}}</h3>
+            @if($translation->address)
+                <div class="address">
+                    <i class="icofont-location-arrow"></i>
+                    {{$translation->address}}
+                </div>
+            @endif
+        </div>
+        <div class="location-map">
+            <div id="map_content"></div>
+        </div>
+       
+     </div>
+    <div class="col-12">
+          <button  onclick="getLocation()" class="btn btn-primary" id="userLocation">Get Direction</button>
+    </div>
 @endif
