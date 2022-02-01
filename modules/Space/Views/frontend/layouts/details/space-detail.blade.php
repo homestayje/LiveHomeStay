@@ -247,6 +247,26 @@
                             <i class="fa fa-twitter fa-lg"></i>
                         </a>
                     </li>
+                    <li>
+                        <a class="whatsapp" href="https://api.whatsapp.com/send?text={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Whatsapp")}}">
+                            <i class="fa fa-whatsapp fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="linkedin" href="https://www.linkedin.com/shareArticle?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("LinkedIn")}}">
+                            <i class="fa fa-linkedin fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Pintrest")}}">
+                            <i class="fa fa-pinterest fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="google-plus" href="https://plus.google.com/share?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Pintrest")}}">
+                            <i class="fa fa-google-plus fa-lg"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}">
