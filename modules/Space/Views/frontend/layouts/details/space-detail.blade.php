@@ -382,7 +382,7 @@
         </div>
        
      </div>
-    <div class="col-12">
+    <div class="col-12 customdirection">
           <button  onclick="getLocation()" class="btn btn-primary" id="userLocation">Get Direction</button>
     </div>
 @endif
