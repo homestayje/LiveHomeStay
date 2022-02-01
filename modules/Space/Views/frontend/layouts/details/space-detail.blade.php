@@ -127,6 +127,9 @@
    
    
    }
+    ul.share-wrapper .fa {
+        color: black;
+    }
    </style>
 
 <div class="g-header">
