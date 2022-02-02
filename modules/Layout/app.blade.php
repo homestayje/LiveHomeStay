@@ -130,6 +130,7 @@
 
     @php event(new \Modules\Layout\Events\LayoutEndHead()); @endphp
 
+    
 </head>
 <body class="frontend-page {{ !empty($row->header_style) ? "header-".$row->header_style : "header-normal" }} {{$body_class ?? ''}} @if(setting_item_with_lang('enable_rtl')) is-rtl @endif @if(is_api()) is_api @endif">
     @php event(new \Modules\Layout\Events\LayoutBeginBody()); @endphp
@@ -154,7 +155,8 @@
     @endif
     @php event(new \Modules\Layout\Events\LayoutEndBody()); @endphp
 
-    <script>
+
+    {{-- <script>
         $(document).ready(function(){
             $('.carousel').slick({
                 speed: 500,
@@ -190,8 +192,7 @@
                 }]
             });
         });
+          --}}
     </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js'></script>
-</body>
+  </body>
 </html>
