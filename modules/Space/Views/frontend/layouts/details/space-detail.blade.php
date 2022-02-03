@@ -231,10 +231,11 @@
                         </a>
                     </li>
                     <li>
-                        <a class="linkedin" href="https://www.linkedin.com/shareArticle?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("LinkedIn")}}">
+                        <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{$row->getDetailUrl()}}" target="_blank" rel="noopener" original-title="{{__("LinkedIn")}}">
                             <i class="fa fa-linkedin fa-lg"></i>
                         </a>
                     </li>
+                   
                     <li>
                         <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Pintrest")}}">
                             <i class="fa fa-pinterest fa-lg"></i>

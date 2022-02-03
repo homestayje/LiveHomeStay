@@ -45,7 +45,7 @@ class AttributeController extends AdminController
             'translation'    => new AttributesTranslation(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Homestay'),
+                    'name' => __('Hotel'),
                     'url'  => 'admin/module/hotel'
                 ],
                 [
@@ -72,7 +72,7 @@ class AttributeController extends AdminController
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('Homestay'),
+                    'name' => __('Hotel'),
                     'url'  => 'admin/module/hotel'
                 ],
                 [
@@ -153,7 +153,7 @@ class AttributeController extends AdminController
             'translation'    => new TermsTranslation(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Homestay'),
+                    'name' => __('Hotel'),
                     'url'  => 'admin/module/hotel'
                 ],
                 [
@@ -184,7 +184,7 @@ class AttributeController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs' => [
                 [
-                    'name' => __('Homestay'),
+                    'name' => __('Hotel'),
                     'url'  => 'admin/module/hotel'
                 ],
                 [

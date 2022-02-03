@@ -7,9 +7,9 @@
             <div class="topbar-search">
                 <h2 class="text">
                     @if($rows->total() > 1)
-                        {{ __(":count spaces found",['count'=>$rows->total()]) }}
+                        {{ __(":count homestay found",['count'=>$rows->total()]) }}
                     @else
-                        {{ __(":count space found",['count'=>$rows->total()]) }}
+                        {{ __(":count homestay found",['count'=>$rows->total()]) }}
                     @endif
                 </h2>
                 <div class="control">
@@ -26,7 +26,7 @@
                         @endforeach
                     @else
                         <div class="col-lg-12">
-                            {{__("Space not found")}}
+                            {{__("Homestay not found")}}
                         </div>
                     @endif
                 </div>
@@ -34,7 +34,7 @@
             <div class="bravo-pagination">
                 {{$rows->appends(request()->query())->links()}}
                 @if($rows->total() > 0)
-                    <span class="count-string">{{ __("Showing :from - :to of :total Spaces",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                    <span class="count-string">{{ __("Showing :from - :to of :total Homestay",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                 @endif
             </div>
         </div>

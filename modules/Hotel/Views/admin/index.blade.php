@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recovery') : __("All Homestays")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recovery') : __("All Hotels")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
-                <a href="{{route('hotel.admin.create')}}" class="btn btn-primary">{{__("Add new Homestay")}}</a>
+                <a href="{{route('hotel.admin.create')}}" class="btn btn-primary">{{__("Add new Hotel")}}</a>
                 @endif
             </div>
         </div>
@@ -109,7 +109,7 @@
                                                 {{__("Action")}}
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="{{route('hotel.admin.edit',['id'=>$row->id])}}">{{__("Edit Homestay")}}</a>
+                                                <a class="dropdown-item" href="{{route('hotel.admin.edit',['id'=>$row->id])}}">{{__("Edit Hotel")}}</a>
                                                 <a class="dropdown-item" href="{{route('hotel.admin.room.index',['hotel_id'=>$row->id])}}">{{__("Manage")}}</a>
                                                 <a class="dropdown-item" href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$row->id])}}">{{__("Manage Availability")}}</a>
                                             </div>
@@ -119,7 +119,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">{{__("No Homestay found")}}</td>
+                                <td colspan="7">{{__("No Hotel found")}}</td>
                             </tr>
                         @endif
                         </tbody>
