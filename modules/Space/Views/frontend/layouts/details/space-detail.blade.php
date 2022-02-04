@@ -259,11 +259,13 @@
     <h3>{{__("Our Promotions")}}</h3>
     <div class="promotions mainslick owl-carousel owl-theme">
         @foreach ($our_promotions as $coupen)
-   
-        
             <div class="maincol"> 
                 <div class="col1">
-                    <h4 class="promotion_amount">RM{{$coupen->amount }} </h4> @if($coupen->discount_type == 'percent') <sup>%</sup> @else  @endif
+                    @if($coupen->discount_type == 'fixed')
+                    <h4 class="promotion_amount"> RM {{$coupen->amount }}</h4> 
+                    @else
+                    <h4 class="promotion_amount"> {{$coupen->amount }}<sup>%</sup></h4> 
+                    @endif
                 </div>
                 <div class="col2">
                     <p class="promotion_date">{{ \Carbon\Carbon::parse($coupen->created_at)->format('d.m.Y')}} - {{\Carbon\Carbon::parse($coupen->end_date)->format('d.m.Y')}}</p>
