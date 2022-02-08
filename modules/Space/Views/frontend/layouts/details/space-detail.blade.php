@@ -52,7 +52,7 @@
        font-size: 20px;
        position: relative;
        top: -25px;
-       right: 5px;
+       right: -3px;
        color: white;
    }
    

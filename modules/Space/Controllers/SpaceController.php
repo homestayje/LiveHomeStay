@@ -9,6 +9,7 @@ use Modules\Location\Models\Location;
 use Modules\Review\Models\Review;
 use Modules\Core\Models\Attributes;
 use Modules\Coupon\Models\Coupon;
+use Modules\Coupon\Models\CouponServices;
 use DB;
 
 class SpaceController extends Controller
@@ -100,12 +101,23 @@ class SpaceController extends Controller
             $space_related = $this->spaceClass::where('location_id', $location_id)->where("status", "publish")->take(4)->whereNotIn('id', [$row->id])->with(['location','translations','hasWishList'])->get();
         }
         $review_list = $row->getReviewList();
-        $promotions = Coupon::where(['create_user' => $row->create_user , 'status' => 'publish'])->get();  
+        $promotions = Coupon::where(['create_user' => $row->create_user , 'status' => 'publish'])->get();
+        $homestay_promotion = [];
+        if($promotions){
+        foreach($promotions as $promo){
+            if($promo->only_for_space != null){
+                if(in_array($row->id,$promo->only_for_space)){
+                    array_push($homestay_promotion, $promo);
+                }
+            }
+           
+        }
+        }
         $data = [
             'row'          => $row,
             'translation'       => $translation,
             'space_related' => $space_related,
-            'our_promotions' => $promotions,
+            'our_promotions' => $homestay_promotion,
             'location_category'=>$this->locationCategoryClass::where("status", "publish")->with('location_category_translations')->get(),
             'booking_data' => $row->getBookingData(),
             'review_list'  => $review_list,
