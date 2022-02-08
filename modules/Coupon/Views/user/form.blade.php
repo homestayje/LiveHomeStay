@@ -63,24 +63,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>{{__("Only For Services")}}</label>
-                    <?php
-                    \App\Helpers\AdminForm::select2('services[]', [
-                        'configs' => [
-                            'ajax'        => [
-                                'url'      => route("coupon.admin.getServices"),
-                                'dataType' => 'json'
-                            ],
-                            'allowClear'  => true,
-                            'multiple'    => true,
-                            'placeholder' => __('-- Select Services --')
-                        ]
-                    ], $row->getServicesToArray() , true)
-                    ?>
-                </div>
-            </div>
+            
             
             <div class="col-md-6">
                 <div class="form-group">
