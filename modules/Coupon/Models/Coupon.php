@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Booking\Models\Bookable;
 use Modules\Booking\Models\Booking;
 use Modules\Booking\Models\Service;
+use Modules\Space\Models\Space;
 
 class Coupon extends Bookable
 {
     protected $table = 'bravo_coupons';
     protected $casts = [
         'services'      => 'array',
+        'only_for_space'      => 'array',
     ];
 
     protected $bookingClass;
@@ -174,6 +176,20 @@ class Coupon extends Bookable
                 $data[] = [
                     'id'   => $item->id,
                     'text' => strtoupper($item->object_model) . " (#{$item->object_id}): {$item->title}"
+                ];
+            }
+        }
+        return $data;
+    }
+
+    public function getHomestaysListtoArray(){
+        $data = [];
+        if(!empty($this->only_for_space)){
+            $spaces = Space::selectRaw('id,title')->whereIn('id',$this->only_for_space)->get();;
+            foreach ($spaces as $item){
+                $data[] = [
+                    'id'   => $item->id,
+                    'text' => strtoupper($item->title)
                 ];
             }
         }

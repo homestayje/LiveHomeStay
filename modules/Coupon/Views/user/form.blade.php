@@ -81,6 +81,25 @@
                     ?>
                 </div>
             </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>{{__("Only For Specific Homestays")}}</label>
+                    <?php
+                    \App\Helpers\AdminForm::select2('only_for_space[]', [
+                        'configs' => [
+                            'ajax'        => [
+                                'url'      => route("coupon.admin.getHomestays"),
+                                'dataType' => 'json'
+                            ],
+                            'allowClear'  => true,
+                            'multiple'    => true,
+                            'placeholder' => __('-- Select homestays --')
+                        ]
+                    ], $row->getHomestaysListtoArray() , true)
+                    ?>
+                </div>
+            </div>
             @if(auth()->user()->roles->pluck('name')[0]  == 'administrator')
             <div class="col-md-6">
                 <div class="form-group">
