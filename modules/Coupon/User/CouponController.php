@@ -243,7 +243,7 @@ class CouponController extends AdminController
             });
         }
 
-        $res = $query->orderBy('id', 'desc')->orderBy('title', 'asc')->where('status','publish')->get();
+        $res = $query->orderBy('id', 'desc')->orderBy('title', 'asc')->where('create_user',Auth::id())->where('status','publish')->get();
         $data = [];
         if (!empty($res)) {
             foreach ($res as $item) {
