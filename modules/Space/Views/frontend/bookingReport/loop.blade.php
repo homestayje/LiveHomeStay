@@ -31,12 +31,12 @@
         <div>{{__("Paid")}}: {{format_money_main($booking->paid)}}</div>
         <div>{{__("Remain")}}: {{format_money($booking->total - $booking->paid)}}</div>
     </td>
-    <td>
+    {{-- <td>
         @php $commission = $booking->commission @endphp
         @if(!empty($commission))
             {{ format_money($commission) }}
         @endif
-    </td>
+    </td> --}}
     <td class="{{$booking->status}} a-hidden">{{$booking->statusName}}</td>
     <td width="2%">
         @if($service = $booking->service)
