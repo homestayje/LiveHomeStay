@@ -95,6 +95,10 @@ class CouponController extends AdminController
     }
 
     public function store( Request $request,$id ){
+        $coupon = Coupon::where('name',$request->name)->exists();
+        if($coupon == true){
+            return redirect()->back()->with('error', __('Coupon with same name already exist please try with different name!'));
+        }  
         $request->validate([
             'code'=>[
                 'required',
@@ -105,7 +109,6 @@ class CouponController extends AdminController
             ],
             'amount'=>['required'],
         ]);
-
         if($id>0){
             $this->checkPermission('coupon_update');
             $row = Coupon::find($id);

@@ -48,6 +48,15 @@
                                     @if(Auth::user()->hasPermissionTo('dashboard_vendor_access'))
                                         <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
                                     @endif
+                                    @if(Auth::user()->hasPermissionTo('dashboard_vendor_access'))
+                                    <li class="@if(is_vendor()) menu-hr @endif">
+                                        @if(!empty(Auth::user()->user_name))
+                                        <a href="{{route('user.profile',[ 'id' => Auth::user()->user_name])}}"><i class="fa fa-home"></i> {{__("My Page")}}</a>
+                                        @else
+                                        <a href="{{route('user.profile',[ 'id' => " "])}}"><i class="fa fa-home"></i> {{__("My Page")}}</a>
+                                        @endif
+                                    </li>
+                                    @endif
                                     <li class="@if(Auth::user()->hasPermissionTo('dashboard_vendor_access')) menu-hr @endif">
                                         <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
                                     </li>

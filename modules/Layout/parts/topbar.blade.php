@@ -111,8 +111,17 @@ $countUnread = $checkNotify->where('read_at', null)->count();
                                 @if(is_vendor())
                                 <li class="menu-hr"><a href="{{route('vendor.dashboard')}}" class="menu-hr"><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
                                 @endif
+                                @if(Auth::user()->hasPermissionTo('dashboard_vendor_access'))
                                 <li class="@if(is_vendor()) menu-hr @endif">
-                                    <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
+                                    @if(!empty(Auth::user()->user_name))
+                                    <a href="{{route('user.profile',[ 'id' => Auth::user()->user_name])}}"><i class="fa fa-home"></i> {{__("My Page")}}</a>
+                                    @else
+                                    <a href="{{route('user.profile',[ 'id' => " "])}}"><i class="fa fa-home"></i> {{__("My Page")}}</a>
+                                    @endif
+                                </li>
+                                @endif
+                                <li class="@if(is_vendor()) menu-hr @endif">
+                                    <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profiles")}}</a>
                                 </li>
                                 @if(setting_item('inbox_enable'))
                                 <li class="menu-hr">

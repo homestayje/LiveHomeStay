@@ -1,8 +1,12 @@
 @extends('layouts.user')
 
 @section('content')
+
     <form class="needs-validation" action="{{route('coupon.user.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
         @csrf
+        @if(Session::has('error'))
+        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+        @endif
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
