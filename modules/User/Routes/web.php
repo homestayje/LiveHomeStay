@@ -7,7 +7,7 @@ Route::group(['prefix'=>'user','middleware' => ['auth','verified']],function(){
     Route::match(['get'],'/dashboard','UserController@dashboard')->name("vendor.dashboard");
     Route::post('/reloadChart','UserController@reloadChart');
 
-    // Route::get('/profile','UserController@profile')->name("user.profile.index");
+    Route::get('/profile','UserController@profile')->name("user.profile.index");
     Route::post('/profile','UserController@profileUpdate')->name("user.profile.update");
     Route::get('/profile/change-password','UserController@changePassword')->name("user.change_password");
     Route::get('/profile/{id}/delete-user','UserController@deleteUser')->name("user.delete_user");
