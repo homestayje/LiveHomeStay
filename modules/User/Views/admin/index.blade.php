@@ -55,6 +55,8 @@
                             <th>{{__('Phone')}}</th>
                             <th>{{__('Role')}}</th>
                             <th class="date">{{ __('Date')}}</th>
+                            <th>{{ __('Bank Name')}}</th>
+                            <th>{{ __('Bank Account')}}</th>
 {{--                            <th class="status">{{__('Status')}}</th>--}}
                             <th></th>
                         </tr>
@@ -77,6 +79,8 @@
                                     @endphp
                                 </td>
                                 <td>{{ display_date($row->created_at)}}</td>
+                                <td>{{ $row->bank_info_username}}</td>
+                                <td>{{ $row->bank_info_accountnumber }}</td>
                                 {{--<td class="status">{{$row->status}}</td>--}}
                                 <td>
                                     <div class="dropdown">

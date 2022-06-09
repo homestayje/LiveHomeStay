@@ -67,7 +67,7 @@ class HotelController extends AdminController
             'hotel_manage_others' => $this->hasPermission('hotel_manage_others'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Homestay'),
+                    'name' => __('Hotel'),
                     'url'  => 'admin/module/hotel'
                 ],
                 [
@@ -75,7 +75,7 @@ class HotelController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Homestay Management")
+            'page_title'=>__("Hotel Management")
         ];
         return view('Hotel::admin.index', $data);
     }
@@ -95,15 +95,15 @@ class HotelController extends AdminController
             'translation'    => new $this->hotelTranslationClass(),
             'breadcrumbs'    => [
                 [
-                    'name' => __('Homestay'),
+                    'name' => __('Hotel'),
                     'url'  => 'admin/module/hotel'
                 ],
                 [
-                    'name'  => __('Add Homestay'),
+                    'name'  => __('Add Hotel'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'     => __("Add new Homestay")
+            'page_title'     => __("Add new Hotel")
         ];
         return view('Hotel::admin.detail', $data);
     }
@@ -131,7 +131,7 @@ class HotelController extends AdminController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Homestay'),
+                    'name' => __('Hotel'),
                     'url'  => 'admin/module/hotel'
                 ],
                 [
@@ -139,7 +139,7 @@ class HotelController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Recovery Homestay Management")
+            'page_title'=>__("Recovery Hotel Management")
         ];
         return view('Hotel::admin.index', $data);
     }
@@ -167,11 +167,11 @@ class HotelController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Homestay'),
+                    'name' => __('Hotel'),
                     'url'  => 'admin/module/hotel'
                 ],
                 [
-                    'name'  => __('Edit Homestay'),
+                    'name'  => __('Edit Hotel'),
                     'class' => 'active'
                 ],
             ],
@@ -248,11 +248,11 @@ class HotelController extends AdminController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Homestay updated') );
+                return back()->with('success',  __('Hotel updated') );
             }else{
                 event(new CreatedServicesEvent($row));
 
-                return redirect(route('hotel.admin.edit',$row->id))->with('success', __('Homestay created') );
+                return redirect(route('hotel.admin.edit',$row->id))->with('success', __('Hotel created') );
             }
         }
     }

@@ -202,7 +202,15 @@ if (!empty($menus))
             @endforeach
         </ul>
     </div>
+
     <div class="logout">
+            @if(Auth::user()->hasPermissionTo('dashboard_vendor_access'))
+            @if(!empty(Auth::user()->user_name))
+            <a href="{{route('user.profile',[ 'id' => Auth::user()->user_name])}}"><i class="fa fa-home"></i> {{__("My Page")}}</a>
+            @else
+            <a href="{{route('user.profile',[ 'id' => " "])}}"><i class="fa fa-home"></i> {{__("My Page")}}</a>
+            @endif
+            @endif
         <form id="logout-form-vendor" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>

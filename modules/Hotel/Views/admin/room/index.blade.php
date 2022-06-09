@@ -5,7 +5,7 @@
             <h1 class="title-bar">{{__("Room Management")}}</h1>
             <div class="title-actions">
                 <a href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$hotel->id])}}" class="btn btn-warning btn-xs"><i class="fa fa-calendar"></i> {{__("Room Availability")}}</a>
-                <a href="{{route('hotel.admin.edit',['id'=>$hotel->id])}}" class="btn btn-info btn-xs"><i class="fa fa-hand-o-right"></i> {{__("Back to homestay")}}</a>
+                <a href="{{route('hotel.admin.edit',['id'=>$hotel->id])}}" class="btn btn-info btn-xs"><i class="fa fa-hand-o-right"></i> {{__("Back to hotel")}}</a>
             </div>
         </div>
         @include('admin.message')

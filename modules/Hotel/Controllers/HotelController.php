@@ -143,7 +143,7 @@ class HotelController extends Controller
 
         $hotel = $this->hotelClass::find($hotel_id);
         if(empty($hotel_id) or empty($hotel)){
-            return $this->sendError(__("Homestay not found"));
+            return $this->sendError(__("Hotel not found"));
         }
 
         if(\request()->input('firstLoad') == "false") {

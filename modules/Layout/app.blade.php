@@ -130,6 +130,7 @@
 
     @php event(new \Modules\Layout\Events\LayoutEndHead()); @endphp
 
+    
 </head>
 <body class="frontend-page {{ !empty($row->header_style) ? "header-".$row->header_style : "header-normal" }} {{$body_class ?? ''}} @if(setting_item_with_lang('enable_rtl')) is-rtl @endif @if(is_api()) is_api @endif">
     @php event(new \Modules\Layout\Events\LayoutBeginBody()); @endphp
@@ -154,44 +155,29 @@
     @endif
     @php event(new \Modules\Layout\Events\LayoutEndBody()); @endphp
 
-    <script>
-        $(document).ready(function(){
-            $('.carousel').slick({
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots:false,
-                centerMode: true,
-                responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        // centerMode: true,    
-                    }
-            
-                }, {
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        dots: false,
-                        infinite: true,
-            
-                    }
-                },  {
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        dots: false,
-                        infinite: true,
-                    }
-                }]
-            });
-        });
+
+   
+  </body>
+  <script>
+
+       
+    $('.mainslick').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:2
+        }
+    }
+})
+      
+
     </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js'></script>
-</body>
 </html>

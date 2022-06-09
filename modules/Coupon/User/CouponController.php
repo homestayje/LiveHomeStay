@@ -8,6 +8,7 @@ use Modules\AdminController;
 use Modules\Booking\Models\Service;
 use Modules\Coupon\Models\Coupon;
 use Modules\Coupon\Models\CouponServices;
+use Modules\Space\Models\Space;
 use Auth;
 
 class CouponController extends AdminController
@@ -94,7 +95,10 @@ class CouponController extends AdminController
     }
 
     public function store( Request $request,$id ){
-       
+        $coupon = Coupon::where('name',$request->name)->exists();
+        if($coupon == true){
+            return redirect()->back()->with('error', __('Coupon with same name already exist please try with different name!'));
+        }  
         $request->validate([
             'code'=>[
                 'required',
@@ -105,7 +109,6 @@ class CouponController extends AdminController
             ],
             'amount'=>['required'],
         ]);
-
         if($id>0){
             $this->checkPermission('coupon_update');
             $row = Coupon::find($id);
@@ -133,6 +136,7 @@ class CouponController extends AdminController
             'quantity_limit',
             'limit_per_user',
             'image_id',
+            'only_for_space'
         ];
        $row->fillByAttr($dataKeys,$request->input());
           
@@ -207,6 +211,7 @@ class CouponController extends AdminController
     }
 
     function getServiceForSelect2(Request $request){
+        
         $q = $request->query('q');
         $query = Service::select('*');
         if ($q) {
@@ -226,6 +231,32 @@ class CouponController extends AdminController
                 ];
             }
         }
+        return response()->json([
+            'results' => $data
+        ]);
+    }
+    public function getHomestaysForSelect2(Request $request){
+        
+        $q = $request->query('q');
+        $query = Space::select('*');
+        if ($q) {
+            $query->where(function ($query) use ($q) {
+                $query->where('title', 'like', '%' . $q . '%')
+                    ->orWhere('id', $q);
+            });
+        }
+
+        $res = $query->orderBy('id', 'desc')->orderBy('title', 'asc')->where('create_user',Auth::id())->where('status','publish')->get();
+        $data = [];
+        if (!empty($res)) {
+            foreach ($res as $item) {
+                $data[] = [
+                    'id'   => $item->id,
+                    'text' => strtoupper($item->title),
+                ];
+            }
+        }
+        
         return response()->json([
             'results' => $data
         ]);

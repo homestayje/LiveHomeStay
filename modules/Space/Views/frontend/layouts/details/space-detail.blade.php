@@ -1,23 +1,19 @@
 
+   
+    
 <style>
     .promotions {
        display: flex;
    }
    .maincol {
        display: flex;
-       flex-direction: row-reverse;
        flex: 1 1 33%;
        margin: 0 0.5%;
-       background: linear-gradient(347deg, rgba(47,79,244,1) 0%, rgba(54,20,27,1) 99%);
+       background: linear-gradient(341deg, rgba(47,79,244,1) 0%, rgb(1 190 227) 99%);
+       border-radius: 10px;
    }
    
-   .col1 {
-       width: 30%;
-   }
-   
-   .col2 {
-       width: 68%;
-   }
+
    .col2 p {margin-bottom: 0px;}
    
    .col1 h4 {
@@ -27,17 +23,16 @@
        color: white !important;
    }
    .col2 {
-       width: 60%;
+       flex:1;
        display: flex;
-       align-items: flex-start;
+       align-items: flex-end;
        flex-direction: column;
    }
    .col1 {
-       width: 36%;
+     
        display: flex;
        justify-content: center;
        align-items: center;
-       flex-direction: row-reverse;
    }
    .col2 p {
        color: white;
@@ -57,11 +52,11 @@
        font-size: 20px;
        position: relative;
        top: -25px;
-       right: 5px;
+       right: -3px;
        color: white;
    }
    
-   .col1:after {content: '';position: absolute;background: white;width: 2px;height: 100%;top: 0;right: -5px;}
+   .col1:after {content: '';position: absolute;background: white;width: 2px;height: 100%;top: 0;left: 195px;}
    
    .col1 {
        position: relative;
@@ -72,7 +67,9 @@
    }
    @media only screen and (max-width:767px) {
    
-   
+    .owl-nav {
+    display: none !important;
+}
    .col1:after {
        content: '';
        position: absolute;
@@ -82,7 +79,8 @@
        bottom: 0;
        right: 0;
        top: unset;
-   }
+       left: unset !important;
+    }
    
    .maincol {
    flex-direction: column;
@@ -103,31 +101,12 @@
    
    
    }
+    ul.share-wrapper .fa {
+        color: black;
+    }
+    .col-12.customdirection {padding-left: 0;margin-bottom: 20px;}
    </style>
-@if(count($our_promotions) > 0)
-<div class="g-overview">
-    <h3>{{__("Our Promotions")}}</h3>
-    <div class="promotions owl-carousel owl-theme">
-        @foreach ($our_promotions as $coupen)
-   
-        
-            <div class="maincol"> 
-                <div class="col1">
-                    <h4 class="promotion_amount">{{$coupen->amount }} </h4> @if($coupen->discount_type == 'percent') <sup>%</sup> @else  @endif
-                </div>
-                <div class="col2">
-                    <p class="promotion_date">{{ \Carbon\Carbon::parse($coupen->created_at)->format('d.m.Y')}} - {{\Carbon\Carbon::parse($coupen->end_date)->format('d.m.Y')}}</p>
-                    <p class="promotion_coupen">PROMO: {{$coupen->code}}</p>
-                    <p class="promotion_limited">Limited Price</p>
-                </div>
-            </div>
-        
-    @endforeach
-    
-       
-    </div>
-</div>
-@endif
+
 <div class="g-header">
     <div class="left">
         <h1>{!! clean($translation->title) !!}</h1>
@@ -246,6 +225,27 @@
                             <i class="fa fa-twitter fa-lg"></i>
                         </a>
                     </li>
+                    <li>
+                        <a class="whatsapp" href="https://api.whatsapp.com/send?text={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Whatsapp")}}">
+                            <i class="fa fa-whatsapp fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{$row->getDetailUrl()}}" target="_blank" rel="noopener" original-title="{{__("LinkedIn")}}">
+                            <i class="fa fa-linkedin fa-lg"></i>
+                        </a>
+                    </li>
+                   
+                    <li>
+                        <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Pintrest")}}">
+                            <i class="fa fa-pinterest fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="google-plus" href="https://plus.google.com/share?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Pintrest")}}">
+                            <i class="fa fa-google-plus fa-lg"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}">
@@ -253,6 +253,32 @@
             </div>
         </div>
     </div>
+@endif
+@if(count($our_promotions) > 0)
+<div class="g-overview">
+    <h3>{{__("Our Promotions")}}</h3>
+    <div class="promotions mainslick owl-carousel owl-theme">
+        @foreach ($our_promotions as $coupen)
+            <div class="maincol"> 
+                <div class="col1">
+                    @if($coupen->discount_type == 'fixed')
+                    <h4 class="promotion_amount"> RM {{$coupen->amount }}</h4> 
+                    @else
+                    <h4 class="promotion_amount"> {{$coupen->amount }}<sup>%</sup></h4> 
+                    @endif
+                </div>
+                <div class="col2">
+                    <p class="promotion_date">{{ \Carbon\Carbon::parse($coupen->created_at)->format('d.m.Y')}} - {{\Carbon\Carbon::parse($coupen->end_date)->format('d.m.Y')}}</p>
+                    <p class="promotion_coupen">PROMO: {{$coupen->code}}</p>
+                    <p class="promotion_limited">Limited Price</p>
+                </div>
+            </div>
+        
+    @endforeach
+    
+       
+    </div>
+</div>
 @endif
 @if($translation->content)
     <div class="g-overview">
@@ -263,6 +289,33 @@
     </div>
 @endif
 @include('Space::frontend.layouts.details.space-attributes')
+<hr>
+@if($translation->cancel_policy)
+@php $translation->cancel_policy = json_decode($translation->cancel_policy,true); @endphp
+    <h3>{{__("Cancellation Policies")}}</h3>
+    <div class="row">
+        
+        <div class="col-lg-4">
+            {{-- <div class="key">{{__("Our Cancellation Policies")}}</div> --}}
+        </div>
+        <div class="col-lg-8">
+            @foreach($translation->cancel_policy as $key => $item)
+                <div class="item @if($key > 1) d-none @endif">
+                    <div class="strong">{{$item['cancel_name']}}</div>
+                    <div class="context">{!! $item['cancel_content'] !!} price {!! $item['cancel_price'] !!} {!! $item['cancel_unit'] !!}</div>
+                    {{-- <div class="context">{!! $item['cancel_price'] !!}</div>
+                    <div class="context">{!! $item['cancel_unit'] !!}</div> --}}
+                </div>
+            @endforeach
+            @if( count($translation->cancel_policy) > 2)
+                <div class="btn-show-all">
+                    <span class="text">{{__("Show All")}}</span>
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            @endif
+        </div>
+    </div>
+@endif
 @if($translation->faqs)
 <div class="g-faq">
     <h3> {{__("FAQs")}} </h3>
@@ -281,11 +334,32 @@
 </div>
 @endif
 @includeIf("Hotel::frontend.layouts.details.hotel-surrounding")
-@if($row->map_lat && $row->map_lng)
+{{-- @if($row->map_lat && $row->map_lng)
 <div class="g-location">
     <h3>{{__("Location")}}</h3>
     <div class="location-map">
         <div id="map_content"></div>
     </div>
 </div>
+@endif --}}
+
+@if($row->map_lat && $row->map_lng)
+    <div class="g-location">
+        <div class="location-title">
+            <h3>{{__("Location")}}</h3>
+            @if($translation->address)
+                <div class="address">
+                    <i class="icofont-location-arrow"></i>
+                    {{$translation->address}}
+                </div>
+            @endif
+        </div>
+        <div class="location-map">
+            <div id="map_content"></div>
+        </div>
+       
+     </div>
+    <div class="col-12 customdirection">
+          <button  onclick="getLocation()" class="btn btn-primary" id="userLocation">Get Direction</button>
+    </div>
 @endif

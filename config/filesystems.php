@@ -49,7 +49,9 @@ return [
         ],
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            //path changes for chatify
+            // 'root' => storage_path('app'),
+            'root' => public_path('uploads'),
         ],
 
         'uploads' => [

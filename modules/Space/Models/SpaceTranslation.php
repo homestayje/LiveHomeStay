@@ -13,7 +13,8 @@ class SpaceTranslation extends Space
         'content',
         'faqs',
         'address',
-        'extra_price'
+        'extra_price',
+        'cancel_policy'
     ];
 
     protected $slugField     = false;

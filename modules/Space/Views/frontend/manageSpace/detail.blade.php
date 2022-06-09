@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <h2 class="title-bar no-border-bottom">
-        {{$row->id ? __('Edit: ').$row->title : __('Add new space')}}
+        {{$row->id ? __('Edit: ').$row->title : __('Add new homestay')}}
     </h2>
     @include('admin.message')
     @if($row->id)
@@ -21,6 +21,7 @@
                     @if(is_default_lang())
                         <a data-toggle="tab" href="#nav-attribute" aria-selected="false">{{__("4. Attributes")}}</a>
                         <a data-toggle="tab" href="#nav-ical" aria-selected="false">{{__("5. Ical")}}</a>
+                        <a data-toggle="tab" href="#nav-cancellation-policy" aria-selected="false">{{__("6. Cancellation Policy")}}</a>
                     @endif
                 </div>
                 <div class="tab-content" id="nav-tabContent">
@@ -64,6 +65,9 @@
                         <div class="tab-pane fade" id="nav-ical">
                             @include('Space::admin/space/ical')
                         </div>
+                        <div class="tab-pane fade" id="nav-cancellation-policy">
+                            @include('Space::admin/space/cancellation-policy')
+                       </div>
                     @endif
                 </div>
             </div>

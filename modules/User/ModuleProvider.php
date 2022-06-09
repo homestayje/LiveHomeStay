@@ -48,6 +48,12 @@ class ModuleProvider extends ModuleServiceProvider
                     'permission' => 'role_view',
                     'icon'       => 'fa fa-lock',
                 ],
+                'bankinfo'=>[
+                    'url'        => route("user.bank_info"),
+                    'title'      => __('Bank Info'),
+                    'permission' => 'role_view',
+                    'icon'       => 'fa fa-bank',
+                ],
                 'subscriber'=>[
                     'url'        => 'admin/module/user/subscriber',
                     'title'      => __('Subscribers'),

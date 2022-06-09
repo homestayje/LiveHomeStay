@@ -36,7 +36,9 @@ class MessageController extends MessagesController
                     $attachment_title = $file->getClientOriginalName();
                     // upload attachment and store the new name
                     $attachment = Str::uuid() . "." . $file->getClientOriginalExtension();
-                    $file->storeAs("public/" . config('chatify.attachments.folder'), $attachment);
+                    // $file->storeAs("public/" . config('chatify.attachments.folder'), $attachment);
+                    //path changes for chatify
+                    $file->storeAs("chatify/" . config('chatify.attachments.folder'), $attachment);
                 } else {
                     $error_msg = "File extension not allowed!";
                 }
@@ -59,7 +61,7 @@ class MessageController extends MessagesController
 
             // fetch message to send it with the response
             $messageData = Chatify::fetchMessage($messageID);
-
+            
             // send to user using pusher
             Chatify::push('private-chatify', 'messaging', [
                 'from_id' => Auth::user()->id,

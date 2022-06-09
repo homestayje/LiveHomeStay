@@ -63,7 +63,7 @@ class VendorController extends FrontendController
             'rows' => $list_hotel->paginate(5),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Homestays'),
+                    'name' => __('Manage Hotels'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -71,7 +71,7 @@ class VendorController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Manage Homestays"),
+            'page_title'         => __("Manage Hotels"),
         ];
         return view('Hotel::frontend.vendorHotel.index', $data);
     }
@@ -86,7 +86,7 @@ class VendorController extends FrontendController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Homestays'),
+                    'name' => __('Manage Hotels'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -94,7 +94,7 @@ class VendorController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Recovery Homestays"),
+            'page_title'         => __("Recovery Hotels"),
         ];
         return view('Hotel::frontend.vendorHotel.index', $data);
     }
@@ -112,7 +112,7 @@ class VendorController extends FrontendController
             'attributes'    => $this->attributesClass::where('service', 'hotel')->get(),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Homestays'),
+                    'name' => __('Manage Hotels'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -120,7 +120,7 @@ class VendorController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Create Homestays"),
+            'page_title'         => __("Create Hotels"),
         ];
         return view('Hotel::frontend.vendorHotel.detail', $data);
     }
@@ -197,10 +197,10 @@ class VendorController extends FrontendController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Homestay updated') );
+                return back()->with('success',  __('Hotels updated') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('hotel.vendor.edit',['id'=>$row->id]))->with('success', __('Homestay created') );
+                return redirect(route('hotel.vendor.edit',['id'=>$row->id]))->with('success', __('Hotels created') );
             }
         }
     }
@@ -240,7 +240,7 @@ class VendorController extends FrontendController
             "selected_terms" => $row->terms->pluck('term_id'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Homestays'),
+                    'name' => __('Manage Hotels'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -248,7 +248,7 @@ class VendorController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Edit Homestays"),
+            'page_title'         => __("Edit Hotels"),
         ];
         
         return view('Hotel::frontend.vendorHotel.detail', $data);
@@ -270,7 +270,7 @@ class VendorController extends FrontendController
                 event(new UpdatedServiceEvent($query));
             }
         }
-        return redirect(route('hotel.vendor.index'))->with('success', __('Delete homestay success!'));
+        return redirect(route('hotel.vendor.index'))->with('success', __('Delete Hotels success!'));
     }
 
     public function restore($id)
@@ -283,7 +283,7 @@ class VendorController extends FrontendController
             event(new UpdatedServiceEvent($query));
 
         }
-        return redirect(route('hotel.vendor.recovery'))->with('success', __('Restore homestay success!'));
+        return redirect(route('hotel.vendor.recovery'))->with('success', __('Restore Hotels success!'));
     }
 
     public function bulkEditHotel($id , Request $request){

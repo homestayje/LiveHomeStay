@@ -63,21 +63,23 @@
         </div>
 
         <div class="row">
+            
+            
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>{{__("Only For Services")}}</label>
+                    <label>{{__("Only For Specific Homestays")}}</label>
                     <?php
-                    \App\Helpers\AdminForm::select2('services[]', [
+                    \App\Helpers\AdminForm::select2('only_for_space[]', [
                         'configs' => [
                             'ajax'        => [
-                                'url'      => route("coupon.admin.getServices"),
+                                'url'      => route("coupon.admin.getHomestays"),
                                 'dataType' => 'json'
                             ],
                             'allowClear'  => true,
                             'multiple'    => true,
-                            'placeholder' => __('-- Select Services --')
+                            'placeholder' => __('-- Select homestays --')
                         ]
-                    ], $row->getServicesToArray() , true)
+                    ], $row->getHomestaysListtoArray() , true)
                     ?>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Homestay Content")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Hotel Content")}}</strong></div>
     <div class="panel-body">
         <div class="form-group">
             <label>{{__("Title")}}</label>
-            <input type="text" value="{!! clean($translation->title) !!}" placeholder="{{__("Name of the homestay")}}" name="title" class="form-control">
+            <input type="text" value="{!! clean($translation->title) !!}" placeholder="{{__("Name of the hotel")}}" name="title" class="form-control">
         </div>
         <div class="form-group">
             <label class="control-label">{{__("Content")}}</label>
@@ -33,13 +33,13 @@
 </div>
 
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Homestay Policy")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Hotel Policy")}}</strong></div>
     <div class="panel-body">
         @if(is_default_lang())
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>{{__("Homestay rating standard")}}</label>
+                        <label>{{__("Hotel rating standard")}}</label>
                         <input type="number" min="1" max="5" value="{{$row->star_rate}}" placeholder="{{__("Eg: 5")}}" name="star_rate" class="form-control">
                     </div>
                 </div>
