@@ -185,7 +185,10 @@ class ManageSpaceController extends FrontendController
             'enable_service_fee',
             'service_fee',
             'surrounding',
-            'cancel_policy'
+            'cancel_policy',
+            'checkin_type',
+            'access_key',
+            'place_key'
 
         ];
         if($this->hasPermission('space_manage_others')){
